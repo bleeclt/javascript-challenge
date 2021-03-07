@@ -48,7 +48,7 @@ function resetTable() {
         var row = tbody.append("tr");
         Object.entries(ufo).forEach(([key,value])=>{
             var cell = row.append("td");
-            cell.text(value);)
+            cell.text(value);
         });
     });
 };
