@@ -3,7 +3,7 @@ var tableData = data;
 
 // append table to web page and add new rows for UFO sighting
 var tbody = d3.select("tbody");
-console.log(tableData);
+// console.log(tableData);
 
 tableData.forEach((ufo) => {
     var row = tbody.append("tr");
@@ -41,7 +41,17 @@ function newDate() {
     };
 };
 
+// function to reset table to original values
 function resetTable() {
     tbody.html("")
-    var table = tableData.forEach((ufo))
-}
+    var table = tableData.forEach((ufo) => {
+        var row = tbody.append("tr");
+        Object.entries(ufo).forEach(([key,value])=>{
+            var cell = row.append("td");
+            cell.text(value);)
+        });
+    });
+};
+
+var resetButton = d3.select("#reset-btn");
+resetButton.on("click", resetTable);
