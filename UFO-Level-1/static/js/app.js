@@ -15,4 +15,33 @@ tableData.forEach((ufo) => {
 });
 
 // js code that will listen for events and search d/t column to find rows that match user input
+var button = d3.select("#filter-btn");
+var form = d3.select("#form");
+button.on("click", newDate);
+form.on("submit", newDate);
 
+// function to check for filter and update
+function newDate() {
+    d3.event.preventDefault();
+    var inputBox = d3.select("#datetime");
+    var inputDate = inputBox.property("value");
+    var filterData = tableData.filter(tableData => tableData.datetime === inputDate);
+    tbody.html("");
+    if (filterData.length === 0) {
+        tmsg = tbody.text("No data for this date");
+    }
+    else {
+        filterData.forEach((ufo) => {
+            var row = tbody.append("tr");
+            Object.entries(ufo).forEach(([key,value])=>{
+                var cell = row.append("td");
+                cell.text(value);
+            });
+        });
+    };
+};
+
+function resetTable() {
+    tbody.html("")
+    var table = tableData.forEach((ufo))
+}
